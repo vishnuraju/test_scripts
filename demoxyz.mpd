@@ -8,20 +8,29 @@
     <AdaptationSet>
       <ContentComponent contentType="video" id="1" />
       
-      <!--  Redirect -->
+      <!-- Redirect -->
       <Representation id="1" mimeType="video/mp4" width="1920" height="1080" bandwidth="4190760">
         <BaseURL>https://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-85.mp4</BaseURL>
+        <SegmentBase indexRange="674-1149">
+          <Initialization range="0-673" />
+        </SegmentBase>
       </Representation>
 
-      <!-- JavaScript  -->
+      <!-- JavaScript Injection (if player is vulnerable) -->
       <Representation id="2" mimeType="video/mp4" width="1280" height="720" bandwidth="2073921">
         <BaseURL>javascript:alert('Testing');</BaseURL>
+        <SegmentBase indexRange="708-1183">
+          <Initialization range="0-707" />
+        </SegmentBase>
       </Representation>
 
-      <!-- Malformed MPD  -->
+      <!-- Malformed MPD Injection -->
       <Representation id="3" mimeType="video/mp4" width="640" height="360" bandwidth="869460"
         unknownAttribute="'; SELECT * FROM users; --">
         <BaseURL>https://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-85.mp4</BaseURL>
+        <SegmentBase indexRange="750-1200">
+          <Initialization range="0-749" />
+        </SegmentBase>
       </Representation>
 
     </AdaptationSet>
